@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
+// import {Router, Link} from "react-router-dom" ;
+import Post from "./Post";
+import Get from "./Get";
+import { BrowserRouter as Router , Routes, Route, Link } from 'react-router-dom';
 
-function App() {
-  return (
+export default function App() {
+
+  const [data, setData] = useState([]);
+    const [loading,setLoading]=useState(false);
+
+    useEffect(() => {
+        setLoading(true);
+        axios
+          .get("https://interns-new.herokuapp.com/list")
+          .then((res) => {
+            // return console.log(res.data.result);
+            const data=res.data.result;
+            setLoading(false);
+            console.log(data)
+            setData(data);
+          })
+          .catch((err) => console.log(err));
+      }, []);
+
+  
+return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+      <h1>Hello !!!</h1>
+      <h2>GET-POST-API!</h2>
+    {/* <Post/> */}
+      {/* <Link to="/post">Click here!!</Link>
+      <br/>
+       <Link to="/">Click here!!</Link>
+      <Routes>
+        <Route path='/post' element={<Post/>}/>  */}
+        {/* <Route path='/Get' element={<Get/>}/> */}
+        {/* </Routes> */}
+        <Get data={data}/>
+       
+       
+      </div>
 
-export default App;
+      
+      );
+     
+    
+  
+}
