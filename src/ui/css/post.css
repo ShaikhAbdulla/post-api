@@ -1,0 +1,39 @@
+.form{
+    border:5px solid orange;;
+    position:relative;
+    background-color:antiquewhite ;
+    padding: 100px;
+    margin:5px 5px 5px 5px;
+}
+.entry{
+    font-size: 20px;
+    font-style: italic;
+}
+ /* .textf{
+ 
+   /* margin-left: 100px; 
+   margin-bottom: 20px;
+   margin-right: 100px;
+} */ 
+.btn{
+    border-radius: 20px;
+    width: 100px;
+    height: 50px;
+    font-size: larger;
+}
+button:hover{
+    background-color:darkcyan;
+}
+.flex{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.align{
+    margin-bottom: .6em;
+}
+.flex input{
+    padding: .4em 1em;
+}
