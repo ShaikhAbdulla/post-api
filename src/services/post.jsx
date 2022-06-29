@@ -17,6 +17,7 @@ export default function Post() {
     const ImageUploader = () => { }
     const [files, setFiles] = useState([]);
     const [images, setImages] = useState([]);
+    
 
     
 
@@ -69,18 +70,13 @@ export default function Post() {
                 setLoading(false);
                 console.log("posting data", res);
             })
+            setLoading(true)
             .catch((err) => console.log(err));
-
-
-            function refreshPage() {
-                window. location. reload(false); 
-            }
-
-
-
-
-
-    }
+}
+if(loading){
+    return  <div><div class="gif"><img src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"/></div>
+    <p class="load">Please wait....your profile is being updated!!</p></div>
+   }
 
 
     // function onClick(){

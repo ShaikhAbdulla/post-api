@@ -7,8 +7,9 @@ import Put from "./put.jsx"
 
 
 
-function Get({ data }) {
-const [loading,setLoading]=useState({imageStatus:"loading", error: true})
+function Get({ data, setLoading }) {
+// const [loading,setLoading]=useState({imageStatus:"loading", error: true})
+// const [loading1,setLoading1]=useState(true)
 const [fields,setFields]=useState([])
 const [isEdit,setIsEdit]=useState(false)
 
@@ -24,14 +25,18 @@ console.log(id2);
 }
 const postDelete=(id,e)=>{
     e.preventDefault();
+    // setLoading(true);
     axios.delete("https://interns-new.herokuapp.com/list/"+id
     // , formData
     )
             .then(res => {
-                // setLoading(false);
+                // setLoading(true);
                 console.log("Deleted", res);
             })
-            .catch((err) => console.log(err));
+            .catch((err) =>{
+                // setLoading(false);
+                console.log(err)}) ;
+            
 
 
 

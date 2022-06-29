@@ -10,6 +10,7 @@ function Put({ fields }) {
     const [designation, setDesignation] = useState(fields.designation);
     const [email, setEmail] = useState(fields.email);
     const [profile_image, setProfile_Image] = useState(fields.profile_image);
+    const [loading, setLoading] = useState(false);
 
     const id = fields.id;
     
@@ -25,12 +26,14 @@ function Put({ fields }) {
         formData.append("designation", designation);
         formData.append("profile_image", profile_image);
         setHeader("Your Profile Got Updated!!")
+        setLoading(false);
 
         Axios.put("https://interns-new.herokuapp.com/list/" + id, formData)
             .then(res => {
 
                 console.log("posting data", res);
             })
+            setLoading(true)
             .catch((err) => console.log(err));
 
     }

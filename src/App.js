@@ -12,22 +12,27 @@ export default function App() {
 
   
   const [data, setData] = useState([]);
+  const[loading,setLoading]=useState(true);
     
 
     useEffect(() => {
        
+      setLoading(true);
         axios
           .get("https://interns-new.herokuapp.com/list")
           .then((res) => {
             // return console.log(res.data.result);
             const data=res.data.result;
-            
+            setLoading(false);
             console.log(data)
             setData(data);
           })
           .catch((err) => console.log(err));
       }, []);
- 
+ if(loading){
+  return  <div><div class="gif"><img src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"/></div>
+  <p class="load">Please wait...While we load!!</p></div>
+ }
 
   
 return (
@@ -45,7 +50,7 @@ return (
        </nav>
       <Routes>
         <Route path='/post' element={<Post/>}/>  
-         <Route path='/Get' element={<Get/>}/> 
+         <Route path='/Get' element={<Get setLoading={setLoading}  />}/> 
          </Routes>
         
         <Get data={data}/>
