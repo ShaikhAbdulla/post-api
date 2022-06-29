@@ -2,17 +2,49 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../App.css";
 import "../ui/css/post.css";
+import { render } from "@testing-library/react";
 
 
 
 // const refreshPage = ()=>{
 //   window.location.reload();
+
 // }
 
-export default function Post() {
 
+export default function Post() {
+    //    PREVIEW IMAGE IN THE FORM 
+    const ImageUploader = () => { }
+    const [files, setFiles] = useState([]);
+    const [images, setImages] = useState([]);
+
+    
+
+    const handleImageChange = e => {
+        console.log("handleImageChange");
+        // FileList to Array
+        let fileList = Array.from(e.target.files);
+        console.log("fileList", fileList);
+        // File Reader for Each file and and update state arrays
+        fileList.forEach((files, i) => {
+            let reader = new FileReader();
+
+            reader.onloadend = () => {
+                setFiles(prevFiles => [...prevFiles, files]);
+                setImages(prevImages => [...prevImages, reader.result]);
+            };
+
+            reader.readAsDataURL(files);
+        });
+    }
+
+
+    const [headingText, setHeadingText] = useState("Welcome to the registration form!")
+    // AXIOS.POST METHOD STARTED
     const [loading, setLoading] = useState(false);
-    const [profile_image, setProfileImage] = useState(null);
+    const [profile_image, setProfile_Image] = useState(null);
+    // const [img,setImg]=useState(setProfileImage)
+
     const [name, setName] = useState("");
     const [mobile, setMobile] = useState("");
     const [designation, setDesignation] = useState("");
@@ -22,6 +54,7 @@ export default function Post() {
 
     const postData = (e) => {
         const formData = new FormData()
+        setHeadingText("Your form got submitted!!");
         formData.append("name", name);
         formData.append("email", email);
         formData.append("mobile", mobile);
@@ -37,12 +70,22 @@ export default function Post() {
                 console.log("posting data", res);
             })
             .catch((err) => console.log(err));
+
+
+            function refreshPage() {
+                window. location. reload(false); 
+            }
+
+
+
+
+
     }
 
 
-
-
-
+    // function onClick(){
+    //     setHeadingText("Your form got submitted!!");
+    // }
 
     // const arr = data.map((data, index) => {
     //   console.log(data)
@@ -59,39 +102,66 @@ export default function Post() {
     //   );
     // });
 
+
+    // const {profileImg}=this.state;
     return (
+
         <div className="App">
+            <p className="submitted">{headingText}</p>
 
 
 
 
-            <form className="form" >
-                <div className="flex">
+            <form className="form " >
+                {/* <div className="flex"> */}
 
                     <div className="imgf flex">
-                        <label className="entry">Add your image here : </label>
-                        <input className="textf" type="file" onChange={(e) => setProfileImage(e.target.files[0])} />
+
+
+                        {/* <label className="entry">Add your image here : </label> */}
+                        <input
+                            className="upload"
+                            type="file"
+                            onChange={handleImageChange}
+                            multiple
+                        />
+                        <div className="img-holder">
+
+
+                            {images.map((images, i) => {
+                                return (
+                                    <div key={i}>
+                                        <img type="url" style={{ width: "80%" }} src={images} alt="a" />
+                                    </div>
+                                );
+                            })}
+
+
+
+                        </div>
+                        <p>Confirm your image!</p>
+                        <input className="textf" type="file" onChange={(e) => setProfile_Image(e.target.files[0])} placeholder="Confirm your image!" />
                     </div>
 
                     <div className="flex align" >
-                        <label className="entry">Name : </label>
-                        <input className="textf" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                        {/* <label className="entry">Name : </label> */}
+                        <input className="textf" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your Name" />
                     </div>
                     <div className="flex align">
-                        <label className="entry">Mobile : </label>
-                        <input className="textf" type="number" value={mobile} onChange={(e) => setMobile(e.target.value)} />
+                        {/* <label className="entry">Mobile : </label> */}
+                        <input className="textf" type="number" value={mobile} onChange={(e) => setMobile(e.target.value)} placeholder="Your Contact No" />
                     </div>
                     <div className="flex align">
-                        <label className="entry">Designation : </label>
-                        <input className="textf" type="text" value={designation} onChange={(e) => setDesignation(e.target.value)} />
+                        {/* <label className="entry">Designation : </label> */}
+                        <input className="textf" type="text" value={designation} onChange={(e) => setDesignation(e.target.value)} placeholder="Your Position" />
                     </div>
                     <div className="flex align">
-                        <label className="entry">Email : </label>
-                        <input className="textf" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        {/* <label className="entry">Email : </label> */}
+                        <input className="textf" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your EmailID" />
                     </div>
 
-                    <button className="btn" onClick={postData}>POST</button>
-                </div>
+                    <button className="btn" onClick= {postData}>SUBMIT</button>
+                {/* </div> */}
             </form>
 
 

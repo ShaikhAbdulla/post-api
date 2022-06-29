@@ -32,10 +32,13 @@
     text-align: start;
     padding: -10px;
     font-size: x-large;
+    color:firebrick;
+    font-family: fantasy;
+    
   
   }
   footer{
-    color:burlywood;
+    color: burlywood;
     font-size: large;
     height: 50px;
   }

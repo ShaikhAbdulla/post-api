@@ -12,16 +12,16 @@ export default function App() {
 
   
   const [data, setData] = useState([]);
-    const [loading,setLoading]=useState(false);
+    
 
     useEffect(() => {
-        setLoading(true);
+       
         axios
           .get("https://interns-new.herokuapp.com/list")
           .then((res) => {
             // return console.log(res.data.result);
             const data=res.data.result;
-            setLoading(false);
+            
             console.log(data)
             setData(data);
           })
@@ -33,7 +33,7 @@ export default function App() {
 return (
     <div className="App">
       <nav className="Nav">
-      <header className="head"><b>Entries of the Employees</b></header>
+      <header className="head">Entries of the Employees</header>
       
     {/* <Post/>  */}
     <div className='link'>
@@ -41,6 +41,7 @@ return (
       <br/>
        <Link to="/">Get Back!!</Link>
        </div>
+    
        </nav>
       <Routes>
         <Route path='/post' element={<Post/>}/>  

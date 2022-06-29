@@ -12,5 +12,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.gif{
+  
+  position: fixed;
+  margin-left: 330px;
+
+  
+  
+}
+.load{
+  font-size: xx-large;
+  color: brown;
+  position: fixed;
+  margin-left: 580px;
+  /* padding-left:60px;
+  text-align: center; */
+  
+  
+}
 
 
