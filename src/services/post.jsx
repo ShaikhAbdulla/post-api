@@ -55,7 +55,7 @@ export default function Post() {
 
     const postData = (e) => {
         const formData = new FormData()
-        setHeadingText("Your form got submitted!!");
+        setHeadingText("Your Profile has been created!!");
         formData.append("name", name);
         formData.append("email", email);
         formData.append("mobile", mobile);
@@ -75,7 +75,7 @@ export default function Post() {
 }
 if(loading){
     return  <div><div class="gif"><img src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"/></div>
-    <p class="load">Please wait....your profile is being updated!!</p></div>
+    <p class="load">Please wait....your profile is being Created!!</p></div>
    }
 
 

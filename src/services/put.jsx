@@ -24,20 +24,23 @@ function Put({ fields }) {
         formData.append("mobile", mobile);
         formData.append("email", email);
         formData.append("designation", designation);
-        formData.append("profile_image", profile_image);
+        // formData.append("profile_image", profile_image);
         setHeader("Your Profile Got Updated!!")
-        setLoading(false);
+        // setLoading(false);
 
         Axios.put("https://interns-new.herokuapp.com/list/" + id, formData)
             .then(res => {
 
                 console.log("posting data", res);
             })
-            setLoading(true)
+            // setLoading(true)
             .catch((err) => console.log(err));
 
     }
-
+    if(loading){
+        return  <div><div class="gif"><img src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"/></div>
+        <p class="load">Please wait....your profile is being Updated!!</p></div>
+       }
     return <form className="form " >
         <div className="flex">
         <h1>{header}</h1>

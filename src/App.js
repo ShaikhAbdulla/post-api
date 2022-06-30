@@ -4,11 +4,13 @@ import "./App.css";
 // import {Router, Link} from "react-router-dom" ;
 import Post from "./services/post";
 import Get from "./services/get";
-import { BrowserRouter as Router , Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router , Routes, Route, Link, Button } from 'react-router-dom';
 
 const year=new Date().getFullYear();
 
 export default function App() {
+
+  
 
   
   const [data, setData] = useState([]);
@@ -35,29 +37,35 @@ export default function App() {
  }
 
   
-return (
+return ( 
     <div className="App">
       <nav className="Nav">
       <header className="head">Entries of the Employees</header>
       
     {/* <Post/>  */}
+    
     <div className='link'>
-       <Link to="/post">Get yourself registered!!</Link>
-      <br/>
-       <Link to="/">Get Back!!</Link>
-       </div>
+       <Link to="/post"><button className="pink">® Register yourself</button></Link>
+      
+       <Link to="/get"><button className="pink">☞ Employee List</button></Link>
+       </div> 
     
        </nav>
-      <Routes>
+       {/* <button className="reg" onClick={<Post/>}>Register yourself</button> */}
+      
+       <Routes>
         <Route path='/post' element={<Post/>}/>  
-         <Route path='/Get' element={<Get setLoading={setLoading}  />}/> 
+         <Route path='/Get' element={<Get  data={data}   />}/>
          </Routes>
+         
         
-        <Get data={data}/>
+        
+       
 
 
       
        <footer>Copyright©{year}</footer>
+     
        
       </div>
 
