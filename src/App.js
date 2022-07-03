@@ -48,6 +48,9 @@ return (
        <Link to="/post"><button className="pink">® Register yourself</button></Link>
       
        <Link to="/get"><button className="pink">☞ Employee List</button></Link>
+       <Link to="/"><button className="pink">⌫ Back</button></Link>
+       
+      
        </div> 
     
        </nav>
@@ -55,8 +58,27 @@ return (
       
        <Routes>
         <Route path='/post' element={<Post/>}/>  
-         <Route path='/Get' element={<Get  data={data}   />}/>
-         </Routes>
+        <Route path='/Get'  element={<Get  data={data}   />}/>
+        <Route path='/post' element={<App  />}/>
+       </Routes>
+
+       <div className="day-night-container">
+        <div className="sun"></div>
+        <div className="moon">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className="stars">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        </div>
+        <div className="water"></div>
+       </div>
          
         
         
@@ -74,4 +96,4 @@ return (
      
     
   
-}
+}   

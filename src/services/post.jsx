@@ -50,12 +50,21 @@ export default function Post() {
     const [mobile, setMobile] = useState("");
     const [designation, setDesignation] = useState("");
     const [email, setEmail] = useState("");
+    const [vname, setVName] = useState("");
+    const [vmobile, setVMobile] = useState("");
+    const [vdesignation, setVDesignation] = useState("");
+    const [vemail, setVEmail] = useState("");
+    
 
 
 
     const postData = (e) => {
         const formData = new FormData()
         setHeadingText("Your Profile has been created!!");
+        setVName("Name required")
+        setVMobile("Name required")
+        setVDesignation("Name required")
+        setVEmail("Name required")
         formData.append("name", name);
         formData.append("email", email);
         formData.append("mobile", mobile);
@@ -77,6 +86,12 @@ if(loading){
     return  <div><div class="gif"><img src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"/></div>
     <p class="load">Please wait....your profile is being Created!!</p></div>
    }
+
+
+   const validate= {name}===""? vname: "" ;
+   const validate1= {mobile}===""? vmobile: "" ;
+   const validate2= {designation}===""? vdesignation: "";
+   const validate3= {email}===""? vemail:"";
 
 
     // function onClick(){
@@ -115,12 +130,12 @@ if(loading){
 
 
                         {/* <label className="entry">Add your image here : </label> */}
-                        <input
+                         <input
                             className="upload"
                             type="file"
                             onChange={handleImageChange}
                             multiple
-                        />
+                        /> 
                         <div className="img-holder">
 
 
@@ -136,24 +151,45 @@ if(loading){
 
                         </div>
                         <p>Confirm your image!</p>
-                        <input className="textf" type="file" onChange={(e) => setProfile_Image(e.target.files[0])} placeholder="Confirm your image!" />
+                        <input className="textf upload" type="file" onChange={(e) => setProfile_Image(e.target.files[0])
+                         } placeholder="Confirm your image!" />
+                        {/* <div className="img-holder"> */}
+
+
+                            {/* {images.map((images, i) => {
+                                return (
+                                    <div key={i}>
+                                        <img type="url" style={{ width: "80%" }} src={images} alt="a" />
+                                    </div>
+                                );
+                            })} */}
+
+
+
+                        {/* </div> */}
                     </div>
 
                     <div className="flex align" >
                         {/* <label className="entry">Name : </label> */}
                         <input className="textf" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your Name" />
+                        {/* <p>{validate}</p> */}
+
+                       
                     </div>
                     <div className="flex align">
                         {/* <label className="entry">Mobile : </label> */}
                         <input className="textf" type="number" value={mobile} onChange={(e) => setMobile(e.target.value)} placeholder="Your Contact No" />
+                        {/* <p>{validate1}</p> */}
                     </div>
                     <div className="flex align">
                         {/* <label className="entry">Designation : </label> */}
                         <input className="textf" type="text" value={designation} onChange={(e) => setDesignation(e.target.value)} placeholder="Your Position" />
+                        {/* <p>{validate2}</p> */}
                     </div>
                     <div className="flex align">
                         {/* <label className="entry">Email : </label> */}
                         <input className="textf" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your EmailID" />
+                        {/* <p>{validate3}</p> */}
                     </div>
 
                     <button className="btn" onClick= {postData}>SUBMIT</button>

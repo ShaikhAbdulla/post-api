@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router , Routes, Route, Link  } from 'react-router-dom';
-import Post from "./services/post";
-import Get from "./services/get";
+// import Post from "./services/post";
+// import Get from "./services/get";
 
 
 
